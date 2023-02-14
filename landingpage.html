@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Writee AI</title>
+  </head>
+  <body>
+    <div id="container" class="flex">
+      <!-- Sidenav started-->
+      <div
+        id="sidebar"
+        class="absolute flex flex-col w-56 h-full pt-5 pb-4 bg-gray-100 border-r border-gray-200 scroll-smooth scroll-m-6"
+      >
+        <!--Logo insertion-->
+        <div class="mx-3 pb-8 flex items-center relative top-0">
+          <img src="./images/logo.svg" class="h-12" alt="logo" />
+        </div>
+        <!--Logo done-->
+        <div
+          class="flex flex-col place-content-between h-screen overflow-y-scroll"
+        >
+          <div>
+            <!-- Start of 3 tabs -->
+            <div class="px-1 flex flex-col">
+              <a
+                href="#"
+                id="hometab"
+                class="flex flex-row items-center p-2 group text-gray-700 hover:text-gray-900 hover:bg-white cursor-pointer rounded-xl"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6 mx-2 text-gray-500 group-hover:text-gray-700"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+                  />
+                </svg>
+                <div class="font-medium text-sm pl-1">Home</div>
+              </a>
+              <a
+                id="documents"
+                class="flex flex-row items-center p-2 mt-1 group text-gray-700 hover:text-gray-900 hover:bg-white cursor-pointer rounded-xl"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6 mx-2 text-gray-500 group-hover:text-gray-700"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
+                  />
+                </svg>
+
+                <div class="font-medium text-sm pl-1">My Documents</div>
+              </a>
+              <a
+                id="toolkit"
+                class="flex flex-row items-center p-2 mt-1 group text-gray-700 hover:text-gray-900 hover:bg-white cursor-pointer rounded-xl"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6 mx-2 text-gray-500 group-hover:text-gray-700"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z"
+                  />
+                </svg>
+
+                <div class="font-medium text-sm pl-1">Toolkit</div>
+              </a>
+            </div>
+            <!-- End of 3 tabs -->
+
+            <!-- Stats insertion -->
+            <div class="flex flex-col px-6 mt-8 mb-5">
+              <div
+                class="font-semibold text-gray-500 text-xs uppercase tracking-wider"
+              >
+                Words Generated
+              </div>
+              <div class="bg-slate-200 h-2 mt-3 mr-1 rounded-full"></div>
+              <div class="text-gray-500 text-xs mt-1">
+                <span id="word-count">0</span>
+                out of 100000 words
+              </div>
+              <div
+                class="mt-8 font-semibold text-gray-500 text-xs uppercase tracking-wider"
+              >
+                Project
+              </div>
+
+              <select
+                id="dropdownButton"
+                name="dropdownButton"
+                class="font-medium w-full border border-gray-400 bg-gray-100 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 rounded-md text-sm pl-1 pr-6 py-2 my-3 text-center inline-flex items-center"
+              >
+                <option>LinkedIn Posts</option>
+              </select>
+            </div>
+
+            <!--Red Alert-->
+            <div class="flex items-start bg-red-100 group mx-3 rounded-md">
+              <div class="p-2 text-red-400">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  class="w-5 h-5"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495zM10 5a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5A.75.75 0 0110 5zm0 9a1 1 0 100-2 1 1 0 000 2z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </div>
+              <div class="text-red-600 flex flex-col align-middle pl-1 pr-3">
+                <div class="font-medium text-sm py-2">57 days left</div>
+                <div class="text-sm pb-2">
+                  <a href="#" class="underline">Click Here</a> to choose your
+                  plan now
+                </div>
+              </div>
+            </div>
+            <!-- End of Red Alert-->
+
+            <!--End of Stats-->
+          </div>
+
+          <!--User details-->
+          <div
+            class="flex ml-3 my-1 py-2 rounded-md items-center justify-center group hover:bg-gray-300"
+          >
+            <div>
+              <img
+                src="./images/profpic.avif"
+                alt="profile-pic"
+                class="h-10 pr-1 rounded-full"
+              />
+            </div>
+            <div class="flex justify-end">
+              <div class="ml-2.5 truncate font-medium text-sm">
+                Ritesh Ranjan
+              </div>
+              <div class="px-1">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  class="w-5 h-5 font-medium text-gray-400 group-hover:text-gray-700"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Sidenav ended-->
+
+      <!--Mainspace started-->
+      <div
+        id="mainspace"
+        class="flex flex-col pl-56 h-screen w-full scroll-smooth overflow-y-auto"
+      >
+        <!--Title started-->
+        <div
+          id="title"
+          class="flex flex-col px-4 pt-4 pb-2 lg:px-8 border-b gap-2 border-gray-200"
+        >
+          <div>
+            <textarea
+              rows="1"
+              name="doc-name"
+              id="doc-name"
+              class="border-b border-gray-400 text-3xl w-92 focus:ring-0 border-0 rounded-sm font-bold border-dashed resize-none text-gray-900 sm:truncate"
+            >
+Untitled Document
+            </textarea>
+          </div>
+          <div class="font-medium italic text-xs text-gray-700 p-0">
+            <p>Last updated at 12/02/2023 6:00:00 pm</p>
+          </div>
+        </div>
+
+        <!--Title ended-->
+        <div id="content-area" class="flex flex-row h-full">
+          <div
+            class="flex flex-col w-3/4 h-full border-r border-b border-gray-200"
+          >
+            <div class="h-12 sticky top-0 z-50">
+              <div
+                class="h-12 bg-gray-50 group flex items-center px-3 text-sm font-normal text-gray-700 border-b border-gray-200"
+              >
+                <select
+                  name="normal"
+                  id="normal"
+                  class="bg-gray-50 group-hover:text-gray-900 w-24 font-medium mr-2"
+                >
+                  <option>Normal</option>
+                </select>
+                <select
+                  name="normal"
+                  id="normal"
+                  class="bg-gray-50 group-hover:text-gray-900 w-24 font-medium mx-2"
+                >
+                  <option>Sans Serif</option>
+                </select>
+                <?xml version="1.0" encoding="UTF-8"?>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  id="Bold"
+                  viewBox="0 0 24 24"
+                  width="512"
+                  height="512"
+                  class="h-3 w-auto ml-4 mr-2 hover:bg-gray-200"
+                >
+                  <path
+                    d="M17.954,10.663A6.986,6.986,0,0,0,12,0H5A2,2,0,0,0,3,2V22a2,2,0,0,0,2,2H15a6.994,6.994,0,0,0,2.954-13.337ZM7,4h5a3,3,0,0,1,0,6H7Zm8,16H7V14h8a3,3,0,0,1,0,6Z"
+                  />
+                </svg>
+
+                <?xml version="1.0" encoding="UTF-8"?>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  id="Bold"
+                  viewBox="0 0 24 24"
+                  width="512"
+                  height="512"
+                  class="h-3 w-auto mx-2 hover:bg-gray-200"
+                >
+                  <path
+                    d="M21,0H6A1.5,1.5,0,0,0,6,3h5.713L9.259,21H3a1.5,1.5,0,0,0,0,3H18a1.5,1.5,0,0,0,0-3H12.287L14.741,3H21a1.5,1.5,0,0,0,0-3Z"
+                  />
+                </svg>
+                <?xml version="1.0" encoding="UTF-8"?>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  id="Outline"
+                  viewBox="0 0 24 24"
+                  width="512"
+                  height="512"
+                  class="h-3.5 w-auto ml-2 mr-6 hover:bg-gray-200"
+                >
+                  <path
+                    d="M12,20a8.009,8.009,0,0,0,8-8V1a1,1,0,0,0-2,0V12A6,6,0,0,1,6,12V1A1,1,0,0,0,4,1V12A8.009,8.009,0,0,0,12,20Z"
+                  />
+                  <path d="M23,22H1a1,1,0,0,0,0,2H23a1,1,0,0,0,0-2Z" />
+                </svg>
+                <?xml version="1.0" encoding="UTF-8"?>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  id="Outline"
+                  viewBox="0 0 24 24"
+                  width="512"
+                  height="512"
+                  class="h-3 w-auto mx-2 hover:bg-gray-200"
+                >
+                  <path
+                    d="M8,4H4A4,4,0,0,0,0,8v4a2,2,0,0,0,2,2H7.91A6.006,6.006,0,0,1,2,19a1,1,0,0,0,0,2,8.009,8.009,0,0,0,8-8V6A2,2,0,0,0,8,4Z"
+                  />
+                  <path
+                    d="M22,4H18a4,4,0,0,0-4,4v4a2,2,0,0,0,2,2h5.91A6.006,6.006,0,0,1,16,19a1,1,0,0,0,0,2,8.009,8.009,0,0,0,8-8V6A2,2,0,0,0,22,4Z"
+                  />
+                </svg>
+                <?xml version="1.0" encoding="UTF-8"?>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  id="Layer_1"
+                  data-name="Layer 1"
+                  viewBox="0 0 24 24"
+                  width="512"
+                  height="512"
+                  class="h-3 w-auto mx-2 hover:bg-gray-200"
+                >
+                  <path
+                    d="M8.207,21.293L.732,13.818c-.473-.473-.732-1.101-.732-1.768s.26-1.296,.732-1.768L8.257,2.757l1.414,1.414L2.146,11.697c-.127,.127-.146,.276-.146,.354s.019,.227,.147,.354l7.474,7.475-1.414,1.414Zm15.061-7.475c.472-.473,.732-1.101,.732-1.768s-.26-1.296-.732-1.768L15.743,2.757l-1.414,1.414,7.525,7.526c.127,.127,.146,.276,.146,.353s-.019,.227-.146,.354l-7.475,7.475,1.414,1.414,7.475-7.475Z"
+                  />
+                </svg>
+                <img
+                  src="./images/number.png"
+                  alt=""
+                  class="h-3.5 w-auto ml-6 mr-2 hover:bg-gray-200"
+                />
+                <?xml version="1.0" encoding="UTF-8"?>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  id="Outline"
+                  viewBox="0 0 24 24"
+                  width="512"
+                  height="512"
+                  class="h-3.5 w-auto mx-2 hover:bg-gray-200"
+                >
+                  <path d="M7,6H23a1,1,0,0,0,0-2H7A1,1,0,0,0,7,6Z" />
+                  <path d="M23,11H7a1,1,0,0,0,0,2H23a1,1,0,0,0,0-2Z" />
+                  <path d="M23,18H7a1,1,0,0,0,0,2H23a1,1,0,0,0,0-2Z" />
+                  <circle cx="2" cy="5" r="2" />
+                  <circle cx="2" cy="12" r="2" />
+                  <circle cx="2" cy="19" r="2" />
+                </svg>
+                <?xml version="1.0" ?><svg
+                  class="icon icon-tabler icon-tabler-subscript h-4 w-auto ml-4 mr-2 hover:bg-gray-200"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M0 0h24v24H0z" fill="none" stroke="none" />
+                  <path d="M5 7l8 10m-8 0l8 -10" />
+                  <path d="M21 20h-4l3.5 -4a1.73 1.73 0 0 0 -3.5 -2" />
+                </svg>
+                <?xml version="1.0" ?><svg
+                  class="icon icon-tabler icon-tabler-superscript h-4 w-auto ml-1 mr-2 hover:bg-gray-200"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M0 0h24v24H0z" fill="none" stroke="none" />
+                  <path d="M5 7l8 10m-8 0l8 -10" />
+                  <path d="M21 11h-4l3.5 -4a1.73 1.73 0 0 0 -3.5 -2" />
+                </svg>
+                <?xml version="1.0" ?><!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+                <svg
+                  enable-background="new 0 0 24 24"
+                  height="24px"
+                  id="Layer_1"
+                  version="1.1"
+                  viewBox="0 0 24 24"
+                  width="24px"
+                  xml:space="preserve"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  class="h-4 w-auto ml-1 mr-5 hover:bg-gray-200"
+                >
+                  <g>
+                    <path
+                      d="M16.9,7.1c-0.4-0.4-1-0.4-1.4,0l-8.4,8.4c-0.4,0.4-0.4,1,0,1.4c0.4,0.4,1,0.4,1.4,0l8.4-8.4C17.3,8.1,17.3,7.5,16.9,7.1z"
+                    />
+                    <path
+                      d="M8.5,22.5L12,19c1.4-1.4,1.8-3.5,1.1-5.3l-1.7,1.7c0,0.8-0.2,1.6-0.9,2.3l-3.5,3.5c-1.2,1.2-3.1,1.2-4.2,0   c-1.2-1.2-1.2-3.1,0-4.2l3.5-3.5c0.6-0.6,1.5-0.9,2.3-0.9l1.7-1.7C8.5,10.2,6.4,10.5,5,12l-3.5,3.5c-1.9,1.9-1.9,5.1,0,7   C3.4,24.5,6.6,24.5,8.5,22.5z"
+                    />
+                    <path
+                      d="M13.4,6.4l3.5-3.5c1.2-1.2,3.1-1.2,4.2,0s1.2,3.1,0,4.2l-3.5,3.5c-0.6,0.6-1.5,0.9-2.3,0.9l-1.7,1.7   c1.8,0.7,3.9,0.3,5.3-1.1l3.5-3.5c1.9-1.9,1.9-5.1,0-7c-1.9-1.9-5.1-1.9-7,0L12,5c-1.4,1.4-1.8,3.5-1.1,5.3l1.7-1.7   C12.5,7.8,12.8,7,13.4,6.4z"
+                    />
+                  </g>
+                </svg>
+                <?xml version="1.0" ?><svg
+                  viewBox="0 0 256 256"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-auto ml-2 mr-1 hover:bg-gray-200"
+                >
+                  <rect fill="none" height="256" width="256" />
+                  <path
+                    d="M224,128a8,8,0,0,1-8,8H120a8,8,0,0,1,0-16h96A8,8,0,0,1,224,128ZM120,72h96a8,8,0,0,0,0-16H120a8,8,0,0,0,0,16Zm96,112H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16ZM72,144a8.5,8.5,0,0,0,3.1-.6A8,8,0,0,0,80,136V56a8,8,0,0,0-4.9-7.4,8.4,8.4,0,0,0-8.8,1.7l-40,40a8.1,8.1,0,0,0,0,11.4l40,40A8.3,8.3,0,0,0,72,144Z"
+                  />
+                </svg>
+                <?xml version="1.0" ?><svg
+                  viewBox="0 0 256 256"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-auto ml-1 mr-4"
+                >
+                  <rect fill="none" height="256" width="256" />
+                  <path
+                    d="M224,128a8,8,0,0,1-8,8H120a8,8,0,0,1,0-16h96A8,8,0,0,1,224,128ZM120,72h96a8,8,0,0,0,0-16H120a8,8,0,0,0,0,16Zm96,112H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16ZM36.9,143.4a8.5,8.5,0,0,0,3.1.6,8.3,8.3,0,0,0,5.7-2.3l40-40a8.1,8.1,0,0,0,0-11.4l-40-40a8.4,8.4,0,0,0-8.8-1.7A8,8,0,0,0,32,56v80A8,8,0,0,0,36.9,143.4Z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  class="h-4 w-auto mx-2 hover:bg-gray-200"
+                >
+                  <path fill="none" d="M0 0h24v24H0V0z" />
+                  <path
+                    fill-opacity=".36"
+                    d="M2 20h20c1.1 0 2 .9 2 2s-.9 2-2 2H2c-1.1 0-2-.9-2-2s.9-2 2-2z"
+                  />
+                  <path
+                    d="M10.63 3.93L6.06 15.58c-.27.68.23 1.42.97 1.42.43 0 .82-.27.98-.68L8.87 14h6.25l.87 2.32c.15.41.54.68.98.68.73 0 1.24-.74.97-1.42L13.37 3.93C13.14 3.37 12.6 3 12 3c-.6 0-1.15.37-1.37.93zM9.62 12L12 5.67 14.38 12H9.62z"
+                  />
+                </svg>
+                <?xml version="1.0" ?><svg
+                  viewBox="0 0 256 256"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-auto mx-4 hover:bg-gray-200"
+                >
+                  <rect fill="none" height="256" width="256" />
+                  <path d="M40,76H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16Z" />
+                  <path d="M40,116H168a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16Z" />
+                  <path d="M216,140H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z" />
+                  <path d="M168,180H40a8,8,0,0,0,0,16H168a8,8,0,0,0,0-16Z" />
+                </svg>
+              </div>
+            </div>
+            <div class="w-full h-screen">
+              <textarea
+                name="content-field"
+                id="content-field"
+                class="w-full h-screen overflow-y-auto outline-none px-4 py-5 italic rounded-sm sm:truncate text-sm text-gray-500 border-none resize-none"
+              >
+Start writing here
+Press Shift+Tab to trigger your assistant
+You can use your favourite tools from the right hand bar</textarea
+              >
+            </div>
+          </div>
+          <div class="w-1/4 h-full flex flex-col">
+            <div class="h-12 sticky top-0 z-50">
+              <div
+                class="z-50 h-12 bg-gray-50 flex items-center font-medium text-gray-700 text-xs px-3 border-b border-gray-200"
+              >
+                <p>Metrics & Suggestions</p>
+              </div>
+            </div>
+            <div>
+              <div class="flex flex-col px-3 py-3">
+                <div class="text-xl font-medium text-violet-600">
+                  Suggestions
+                </div>
+                <img
+                  src="./images/document-suggestion-empty-state.svg"
+                  alt=""
+                  class="opacity-90"
+                />
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <div
+                class="h-6 bg-gray-50 flex items-center font-medium text-gray-700 text-xs px-3 border-t border-b border-gray-200"
+              >
+                In-situ Toolkit (Beta)
+              </div>
+              <div class="flex flex-col">
+                <div>
+                  <div
+                    class="flex flex-col pl-4 pr-5 py-3 border-b border-gray-200"
+                  >
+                    <p class="font-medium text-sm">
+                      Select Content Type<span class="text-red-700"> *</span>
+                    </p>
+                    <select
+                      id="ddButton"
+                      name="ddButton"
+                      class="font-normal w-full border border-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 rounded-md text-sm px-3 py-2 my-2 inline-flex items-center justify-start"
+                    >
+                      <option>Select</option>
+                      <option>Headline</option>
+                    </select>
+                    <p class="font-medium text-sm">
+                      Content Description<span class="text-red-700"> *</span>
+                    </p>
+                    <textarea
+                      name="desc"
+                      id="desc"
+                      cols="w-full"
+                      rows="4"
+                      class="font-normal text-sm text-gray-700 px-4 py-2 rounded-md border border-gray-400 my-2"
+                    >
+Describe your content here</textarea
+                    >
+                    <button
+                      class="w-full bg-violet-600 m-1 text-white border-none rounded-lg p-2 hover:bg-violet-800"
+                    >
+                      Brew Magic
+                    </button>
+                  </div>
+                  <div class="px-5 py-6 border-l border-gray-200 h-fit">
+                    <p>
+                      Words: <span class="text-violet-600 font-medium">0</span>
+                    </p>
+                    <p>
+                      Characters:
+                      <span class="text-violet-600 font-medium">0</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--Mainspace ended-->
+    </div>
+  </body>
+</html>
